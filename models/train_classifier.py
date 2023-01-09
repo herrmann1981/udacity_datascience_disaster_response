@@ -53,7 +53,7 @@ def setup_arguments() -> argparse.Namespace:
              '(-1) or omitting this parameter disables this feature.',
         dest='message_limit',
         action='store',
-        default='1000'
+        default='-1'
     )
 
     parser.add_argument(

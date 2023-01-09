@@ -10,6 +10,7 @@ import nltk.tokenize
 import nltk.stem
 
 import pandas as pd
+import numpy as np
 from sqlalchemy import create_engine
 
 import sklearn.metrics
@@ -156,7 +157,9 @@ class Modeller:
             .drop('message', axis=1)\
             .drop('id_messages', axis=1)\
             .drop('original', axis=1)\
-            .drop('genre', axis=1)
+            .drop('genre', axis=1)\
+            .drop('id_categories', axis=1)\
+            .drop('index', axis=1)
 
     @classmethod
     def tokenize(cls, text):
@@ -244,7 +247,7 @@ class Modeller:
         self.model = GridSearchCV(pipeline,
                                   param_grid=parameters,
                                   scoring='f1_macro',
-                                  n_jobs=1)
+                                  n_jobs=-1)
 
     def _evaluate_model(self):
         """
@@ -252,6 +255,19 @@ class Modeller:
         :return:
         """
         logging.info('Evaluate model...')
+        y_pred = self.model.best_estimator_.predict(self.X_test)
+
+        labels = np.unique(y_pred)
+        confusion_mat = confusion_matrix(self.Y_test, y_pred, labels=labels)
+        accuracy = (y_pred == self.Y_test).mean()
+
+        logging.info('Evaluation results:')
+        logging.info("Labels: %s", labels)
+        logging.info("Confusion Matrix: %s", confusion_mat)
+        logging.info("Accuracy: %s", accuracy)
+        logging.info("Best Parameters: ")
+        for key, value in self.model.best_params_.items():
+            logging.info("%s: %s", key, value)
 
     def _save_model(self):
         """

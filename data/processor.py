@@ -104,6 +104,7 @@ class Processor:
             df_categories_temp[column] = df_categories_temp[column].astype(str).str[-1]
             # convert the 0 or 1 into an integer
             df_categories_temp[column] = df_categories_temp[column].astype(int)
+            df_categories_temp[column] = df_categories_temp[column].apply(lambda x: 1 if x > 0 else 0)
 
         result = pd.concat([df_categories['id'], df_categories_temp], axis=1)
         return result
