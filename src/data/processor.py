@@ -1,7 +1,7 @@
-import os
-import sys
-import logging
 import argparse
+import logging
+import os
+
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -141,6 +141,5 @@ class Processor:
                                engine,
                                if_exists='replace',
                                chunksize=1000)
-
 
         logging.debug('Writing to database finished')

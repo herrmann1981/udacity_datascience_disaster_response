@@ -5,20 +5,18 @@ import argparse
 import pickle
 
 import nltk
-nltk.download(['punkt', 'wordnet','stopwords'])
 import nltk.tokenize
 import nltk.stem
 
 import pandas as pd
-import numpy as np
 from sqlalchemy import create_engine
 
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline, FeatureUnion
-from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.pipeline import Pipeline
+from sklearn.base import BaseEstimator
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.svm import LinearSVC
 from sklearn.tree import DecisionTreeClassifier
@@ -29,6 +27,7 @@ from sklearn.gaussian_process.kernels import RBF
 from sklearn.naive_bayes import GaussianNB
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 
+nltk.download(['punkt', 'wordnet', 'stopwords'])
 
 class DummyEstimator(BaseEstimator):
     """

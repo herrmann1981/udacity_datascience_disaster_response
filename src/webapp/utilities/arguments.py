@@ -40,6 +40,6 @@ class ArgumentParser:
     def parse(self) -> argparse.Namespace:
         """
         Parse the provided arguments from the command line
-        :return:
+        :return: The parsed arguments
         """
         return self.parser.parse_args()
