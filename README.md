@@ -180,11 +180,31 @@ optional arguments:
 ```
 
 ## Results
+Cleaning the data was an easy step and did not take much time. But training the model is a time consuming step. That is the reasone
+why currently a couple of classifiers are commented out. At the moment only the RandomForest
+and MLPClassifier are tested. 
+From this two the MLPClassifier achieved the better accuracy: Someething between 0.71 (aid related class) and 0.99 (offer class)
+depending on the class that should be detected.
+
 Once all steps have been carried out you will see a web site like below:
 ![Webapp Master](images/webapp_master.png)
 
 You can classify a message via the text box and you will see something like this:
 ![Webapp Query](images/webapp_go.png)
+
+At this time we can try to classify messages. Let's give it a try:
+* "When will the storm hit the coast" --> Related, Aid Related, Other Aid, Weather Related, Storm
+   That seems to be fairly right
+* "A lot of casualties here lying in the streets" --> Death
+   Seems ok
+* "What a massive storm. I hope everyone is all right" --> Related, Storm
+   Seems ok
+* "A lot of soldiers patrolling the streets in XY city" --> Related, Request, Aid Related, Military, Direct Report
+   Seems ok
+* "We need infusions and bandages" --> Related, Request, Direct report
+   Partly right
+* "We need urgend support. Any help is welcome." --> Related, Request, Aid Related, Other Aid
+   Seems ok
 
 ## Caveats
 1. On my local computer training the model ran out of memory (including SWAP space), resulting in the training to be terminated by a 'Interupted by signal 9: SIGKILL'. That is why I needed to increase
