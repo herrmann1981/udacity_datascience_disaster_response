@@ -1,8 +1,22 @@
 # Disaster Response Pipeline Project
-This project is intended to classify social messages after or during a disaster according 
-to predefined classes. For example if help of shelter is needed. This seems to be straight forward at first. But 
+Disasters like earthquakes, hurricans or floods are a big thread and endangers the life of many people around the globe. 
+After an event help organizations are trying to provide fresh water, food or medical supply to people in need. 
+But how to decide where this help is needed the most. This is a difficult task and must be done fast
+in order to save as many lives as possible. Social media channels are used excessively after a catastrophe. And
+often people describe what is missing or where help is needed. Others offer help or supply. 
+This massive amount of messages can not be read manually. 
+
+This is a problem where this little project tries to help. It attempts to take messages from social channels and
+categorizes them in order to filter out the ones that are important for help organizations. This could speed
+up humanitary operations.  For example if help or shelter is needed. This seems to be straight forward at first. But 
 for example someone who needs drinking water might not use the word 'water' or 'drink'. Instead
-she/he might use 'thirsty'. 
+she/he might use 'thirsty'.
+
+Right now we are only using the message itself. This already has shown the potential to classify messages
+correctly. But the process could be further improved by adding meta information. Putting data privacy considerations
+aside for a moment, for example the geographic origin of messages could be helpful. 
+Or even the absence of messages from a certain region could indicate major problems. Perhaps a complete
+region is out out power, and internet and no one is able to write messages.
 
 This project was set up during the [Udacity](https://www.udacity.com) [data science nanodegree](https://www.udacity.com/course/data-scientist-nanodegree--nd025).  
 

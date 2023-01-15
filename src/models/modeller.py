@@ -18,6 +18,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.base import BaseEstimator
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+from sklearn.metrics import classification_report
 from sklearn.svm import LinearSVC
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -271,6 +272,11 @@ class Modeller:
         logging.info("Best Parameters: ")
         for key, value in self.model.best_params_.items():
             logging.info("%s: %s", key, value)
+
+        logging.info('Classification report')
+        report = classification_report(self.Y_test, y_pred, target_names=list(accuracy.index))
+        for row in report.split('\n'):
+            logging.info(row)
 
     def _save_model(self):
         """
